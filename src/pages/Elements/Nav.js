@@ -62,7 +62,7 @@ function Nav() {
     <div className="nav px-8 py-4 w-[1200px] m-auto border-b-[1px] border-white  max-sm:w-full">
       <div className="flex justify-between items-center">
         <div
-          className="logo text-3xl font-semibold font-sans cursor-pointer max-sm:text-xl"
+          className="logo text-3xl font-semibold font-sans cursor-pointer max-sm:text-2xl"
           onClick={() => navigate("/")}
         >
           <p className="tracking-wider ">
@@ -73,7 +73,7 @@ function Nav() {
           <div className="dump ">
             <Dialog>
               <DialogTrigger>
-                <p className="text-lg font-semibold cursor-pointer tracking-wider text-base">
+                <p className="text-lg font-semibold cursor-pointer tracking-wider text-base max-sm:text-base">
                   Dump
                 </p>
               </DialogTrigger>

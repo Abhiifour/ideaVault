@@ -29,10 +29,10 @@ function Vault() {
   }, [isUpdated]);
 
   return (
-    <div className="vault w-[1200px] m-auto pb-2 max-sm:w-full max-sm:pb-[250px]  ">
+    <div className="vault w-[1200px] m-auto pb-2 max-sm:w-full max-sm:mt-4   ">
       <div className="content flex flex-col items-start px-8 gap-10 ">
         <div className="heading text-8xl font-bold text-white max-sm:text-5xl max-sm:mt-4 max-sm:w-full max-sm:m-auto">My Vault</div>
-        <ScrollArea className="w-[1160px] h-[500px] max-sm:w-[350px] max-sm:h-[400px] ">
+        <ScrollArea className="w-[1160px] h-[500px] max-sm:w-[330px] max-sm:h-[350px] ">
           <div className="wrapper flex flex-row flex-wrap gap-x-5 gap-y-6 max-sm:flex-col">
             {thoughts.map((thought) => (
               <ThoughtCard

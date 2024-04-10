@@ -6,7 +6,7 @@ import { userState } from "../Atom";
 function Profile() {
   const userData = useRecoilValue(userState)
   return (
-    <div className="profile w-[1200px] m-auto px-8 max-sm:w-full max-sm:h-full max-sm:pb-[350px]">
+    <div className="profile w-[1200px] m-auto px-8 max-sm:w-full max-sm:h-full max-sm:pb-0 max-sm:mt-4">
       <div className="top text-8xl font-bold text-white text-start  max-sm:text-5xl max-sm:text-center max-sm:w-full max-sm:mt-4">
         Profile
       </div>

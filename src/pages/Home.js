@@ -55,12 +55,12 @@ function Home() {
   }, []);
 
   return (
-    <div className="home pb-10 w-[1200px] m-auto px-8  max-sm:w-full max-sm:h-full max-sm:pb-[260px]">
-      <div className="hero-section flex justify-start flex-col items-start max-sm:w-full max-sm:mt-8 ">
-        <div className="title text-[150px] text-white font-bold max-sm:text-[60px] max-sm:m-auto   ">
+    <div className="home pb-10 w-[1200px] m-auto px-8  max-sm:w-full max-sm:h-full max-sm:pb-[0px] max-sm:mt-4">
+      <div className="hero-section flex justify-start flex-col items-start max-sm:w-full max-sm:mt-8 max-sm:gap-3 ">
+        <div className="title text-[150px] text-white font-bold max-sm:text-5xl max-sm:   ">
           <p className="tracking-wider">Idea Vault.</p>
         </div>
-        <div className="subtitle text-4xl text-stone-800 font-semibold px-2 max-sm:text-lg">
+        <div className="subtitle text-4xl text-stone-800 font-semibold px-2 max-sm:text-lg max-sm:px-0">
           <Typewriter
             onInit={(typewriter) => {
               typewriter
@@ -77,13 +77,13 @@ function Home() {
         </div>
       </div>
       {isLogged ? (
-        <div className="post-feed mt-[200px] flex flex-col  items-start gap-4 pb-[28px] max-sm:mt-[200px] max-sm:w-full ">
+        <div className="post-feed mt-[200px] flex flex-col  items-start gap-4 pb-[28px] max-sm:pb-0 max-sm:mt-[100px] max-sm:w-full ">
           <textarea
-            className="w-[800px] h-[60px] rounded-lg px-4 py-4 font-semibold shadow-lg max-sm:w-[350px]"
+            className="w-[800px] h-[60px] rounded-lg px-4 py-4 font-semibold shadow-lg max-sm:w-[330px]"
             placeholder="Add thoughts to vault !"
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
-          <div className="bottom flex justify-between items-center w-[800px] max-sm:w-[350px]">
+          <div className="bottom flex justify-between items-center w-[800px] max-sm:w-[330px]">
             <div className="left flex gap-2 ">
               <Switch
                 id="visibilty"
@@ -101,7 +101,7 @@ function Home() {
           </div>
         </div>
       ) : (
-        <div className="login mt-[200px] pb-8">
+        <div className="login mt-[200px] pb-8 max-sm:mt-[60px]">
           <Login />
         </div>
       )}
