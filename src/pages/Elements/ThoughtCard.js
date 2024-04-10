@@ -26,7 +26,7 @@ function ThoughtCard({ time, content, id }) {
 
   return (
     <div className="card ">
-      <Card className="w-[370px] px-4 py-6 flex flex-col gap-3 shadow-sm max-sm:w-[320px]">
+      <Card className="w-[370px] px-4 py-6 flex flex-col gap-3 shadow-sm max-sm:w-[310px]">
         <div className="top flex justify-between gap-6">
           <div className="left text-semibold text-sm text-gray-400 max-sm:text-sm">
             {formatedDate} {formatedTime}

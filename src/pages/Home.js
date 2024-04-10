@@ -79,11 +79,11 @@ function Home() {
       {isLogged ? (
         <div className="post-feed mt-[200px] flex flex-col  items-start gap-4 pb-[28px] max-sm:pb-0 max-sm:mt-[200px] max-sm:mb-[110px] max-sm:w-full max-sm:m-auto ">
           <textarea
-            className="w-[800px] h-[60px] rounded-lg px-4 py-4 font-semibold shadow-lg max-sm:w-[330px] max-sm:px-0"
+            className="w-[800px] h-[60px] rounded-lg px-4 py-4 font-semibold shadow-lg max-sm:w-[320px] max-sm:m-auto"
             placeholder="Add thoughts to vault !"
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
-          <div className="bottom flex justify-between items-center w-[800px] max-sm:w-[330px]">
+          <div className="bottom flex justify-between items-center w-[800px] max-sm:w-[320px] ">
             <div className="left flex gap-2 ">
               <Switch
                 id="visibilty"
