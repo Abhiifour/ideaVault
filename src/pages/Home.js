@@ -77,9 +77,9 @@ function Home() {
         </div>
       </div>
       {isLogged ? (
-        <div className="post-feed mt-[200px] flex flex-col  items-start gap-4 pb-[28px] max-sm:pb-0 max-sm:mt-[100px] max-sm:w-full ">
+        <div className="post-feed mt-[200px] flex flex-col  items-start gap-4 pb-[28px] max-sm:pb-0 max-sm:mt-[200px] max-sm:mb-[110px] max-sm:w-full max-sm:m-auto ">
           <textarea
-            className="w-[800px] h-[60px] rounded-lg px-4 py-4 font-semibold shadow-lg max-sm:w-[330px]"
+            className="w-[800px] h-[60px] rounded-lg px-4 py-4 font-semibold shadow-lg max-sm:w-[330px] max-sm:px-0"
             placeholder="Add thoughts to vault !"
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
@@ -101,7 +101,7 @@ function Home() {
           </div>
         </div>
       ) : (
-        <div className="login mt-[200px] pb-8 max-sm:mt-[60px]">
+        <div className="login mt-[200px] pb-8 max-sm:mt-[200px] max-sm:mb-[110px] ">
           <Login />
         </div>
       )}
