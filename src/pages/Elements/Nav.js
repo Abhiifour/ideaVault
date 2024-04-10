@@ -73,9 +73,11 @@ function Nav() {
           <div className="dump ">
             <Dialog>
               <DialogTrigger>
-                <p className="text-lg font-semibold cursor-pointer tracking-wider text-base max-sm:text-base">
+               {
+                isLogged ? ( <p className="text-lg font-semibold cursor-pointer tracking-wider text-base max-sm:text-base">
                   Dump
-                </p>
+                </p>):<div></div>
+               }
               </DialogTrigger>
               <DialogContent className="w-[450px] h-[300px] bg-blue-200 max-sm:w-[350px]">
                 <DialogHeader>
