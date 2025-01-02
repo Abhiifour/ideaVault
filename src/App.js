@@ -17,7 +17,7 @@ function App() {
         <Route path="/Vault" element={<Vault />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
-      <Footer/>
+   
       <div className="toast">
         <Toaster position="bottom-right" reverseOrder={false} />
       </div>

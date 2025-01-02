@@ -1,10 +1,11 @@
 import { createClient } from "@supabase/supabase-js";
 
 export const supabase = createClient(
-  "https://qegqjzvnmpjpeuoddvjm.supabase.co",
-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFlZ3FqenZubXBqcGV1b2RkdmptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTI2OTI0MzIsImV4cCI6MjAyODI2ODQzMn0.QdF8cyVLuaHnjW3O9qKFfSEorNaxPmy-yN3ZVMLwzK4"
-
+"https://chabcajejlhxsowqbwpq.supabase.co",
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNoYWJjYWplamxoeHNvd3Fid3BxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU4MTQ2MjIsImV4cCI6MjA1MTM5MDYyMn0.WruvfIvtNyzTJyJmn3OShk5IlKXY5iXOt0FPG7jmB6s"
 );
+
+
 
 export const login = async () => {
   try {
@@ -15,7 +16,7 @@ export const login = async () => {
     console.log(error)
   } catch (e) {
     console.log(e)
-  }
+  }   
 }
 
 export const getUser =async () => {
