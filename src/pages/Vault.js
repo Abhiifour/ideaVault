@@ -75,10 +75,10 @@ function Vault() {
       <div className="max-w-6xl mx-auto px-4">
         {/* Header Section */}
         <div className="space-y-6 mb-12">
-          <h1 className="text-5xl md:text-7xl font-serif text-gray-800 tracking-tight">
+          <h1 className="text-2xl md:text-7xl font-serif text-gray-800 tracking-tight">
             My Vault
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-base sm:text-lg text-gray-600">
             Your personal collection of thoughts and ideas
           </p>
         </div>
@@ -86,10 +86,10 @@ function Vault() {
         {/* Content Section */}
         {isLoading ? (
           <div className="flex justify-center items-center h-64">
-            <div className="animate-pulse text-gray-400">Loading thoughts...</div>
+            <div className="animate-pulse text-gray-400 text-[14px] sm:text-base">Loading thoughts...</div>
           </div>
         ) : thoughts.length === 0 ? (
-          <div className="text-center py-16 bg-white/50 rounded-2xl backdrop-blur-sm">
+          <div className="text-center py-16 bg-white/50 rounded-2xl backdrop-blur-sm text-[14px] sm:text-base">
             <h3 className="text-xl text-gray-600">No thoughts yet</h3>
             <p className="text-gray-500 mt-2">Start adding some thoughts to your vault!</p>
           </div>
@@ -138,7 +138,7 @@ function Vault() {
           </svg>
         </button>
                 </DialogTrigger>
-                <DialogContent className="bg-white/95 backdrop-blur-md border-none shadow-xl max-w-lg w-full">
+                <DialogContent className="bg-white/95 backdrop-blur-md border-none shadow-xl max-w-lg w-[90%]">
                   <DialogHeader>
                     <DialogTitle className="text-xl font-medium text-gray-800">
                       Add a Thought

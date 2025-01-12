@@ -73,7 +73,7 @@ const Home = () => {
       {/* Main Content */}
       <div className="relative pt-32 pb-20 px-4 z-10">
         <div className="max-w-4xl mx-auto text-center space-y-6">
-         <div className="h-[400px] lg:h-[300px] flex flex-col justify-center max-w-[700px] m-auto">
+         <div className="h-[200px] lg:h-[300px] flex flex-col justify-center max-w-[700px] m-auto">
          <h1 className="text-4xl md:text-6xl font-serif text-gray-800 font-Playwrite">
             Find your clarity
           </h1>
@@ -100,21 +100,21 @@ const Home = () => {
                          placeholder:text-gray-400"
                 placeholder="What's on your mind?"
               />
-              <div className="flex items-center justify-between px-2">
+              <div className="flex items-center justify-between px-2 text-[14px] sm:text-base">
                 <div className="flex items-center gap-3">
                   <Switch className="bg-white shadow-sm" />
-                  <label className="text-gray-600">Make Public</label>
+                  <label className="text-gray-600 ">Make Public</label>
                 </div>
                 <Button
                   onClick={createThought}
-                  className="bg-gray-900 hover:bg-gray-800 text-white px-8"
+                  className="bg-gray-900 hover:bg-gray-800 text-white px-6 text-[14px] sm:text-base sm:px-8"
                 >
                   Save
                 </Button>
               </div>
             </div>
           ) : (
-            <div className="mt-16 max-w-sm mx-auto bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+            <div className="mt-16 w-[90%] sm:max-w-[450px] mx-auto bg-white/80 backdrop-blur-sm rounded-2xl  shadow-lg">
               <Login />
             </div>
           )}

@@ -52,10 +52,10 @@ function Features() {
       <div className="relative z-10">
         {/* Header Section */}
         <div className="py-16 px-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-serif text-gray-800 mb-6">
+          <h1 className="text-2xl md:text-6xl font-serif text-gray-800 mb-6">
             Powerful Features for Your Ideas
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-[16px] md:text-xl text-gray-600 max-w-2xl mx-auto">
             Everything you need to capture, organize, and nurture your thoughts in one beautiful place.
           </p>
         </div>
@@ -69,14 +69,14 @@ function Features() {
                 className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg 
                          hover:shadow-xl transition-all duration-300"
               >
-                <div className="mb-6">{feature.icon}</div>
-                <h3 className="text-2xl font-medium text-gray-800 mb-4">
+                <div className="mb-6 w-[50px] m-auto">{feature.icon}</div>
+                <h3 className="text-[18px] md:text-2xl  font-medium text-gray-800 mb-4">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <p className="text-[14px] md:text-base text-gray-600 mb-6 leading-relaxed">
                   {feature.description}
                 </p>
-                <div className="text-sm font-medium text-purple-600">
+                <div className="text-[12px] md:text-sm font-medium text-purple-600">
                   {feature.highlight} →
                 </div>
               </div>
@@ -92,8 +92,8 @@ function Features() {
 
         {/* Footer */}
         <div className="bg-Mypurple">
-          <div className="max-w-7xl mx-auto px-6 py-12">
-            <div className="text-center text-[14px] text-gray-600">
+          <div className="max-w-7xl mx-auto px-6 py-6">
+            <div className="text-center text-[12px] sm:text-[16px] text-gray-600">
               <p>© 2025 IdeaVault. All rights reserved.</p>
             </div>
           </div>
