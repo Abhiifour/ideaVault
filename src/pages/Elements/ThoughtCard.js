@@ -72,7 +72,7 @@ function ThoughtCard({ time, content, id }) {
                   <Trash2 className="w-4 h-4 text-gray-400 hover:text-red-500 transition-colors" />
                 </button>
               </AlertDialogTrigger>
-              <AlertDialogContent>
+              <AlertDialogContent className="w-[90%]">
                 <AlertDialogHeader>
                   <AlertDialogTitle>Delete this thought?</AlertDialogTitle>
                   <AlertDialogDescription>
