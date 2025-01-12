@@ -8,7 +8,12 @@ module.exports = {
     "./src/**/*.{js,jsx}",
   ],
   prefix: "",
+  
   theme: {
+    fontFamily:{
+      "Playwrite":["Playwrite AU SA"],
+      "Poppins":["Poppins"]
+    },
     container: {
       center: true,
       padding: "2rem",
@@ -18,6 +23,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        Mypurple:"#D2D9FF",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

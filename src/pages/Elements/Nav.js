@@ -23,7 +23,7 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { isThoughtUpdated, loginState, userState } from "../../Atom";
 import { supabase } from "../../supabase/auth";
-import {toast} from 'react-hot-toast'
+import { toast } from 'react-hot-toast';
 
 function Nav() {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ function Nav() {
   const [isLogged, setIsLogged] = useRecoilState(loginState);
   const [content, setContent] = useState("");
   const [isUpdated, setIsUpdated] = useRecoilState(isThoughtUpdated);
-
+  console.log(userData)
   const createThought = async () => {
     try {
       const { data, error } = await supabase
@@ -39,124 +39,134 @@ function Nav() {
         .insert({ content: content, createdBy: userData.userId })
         .select();
 
-      console.log(data);
+      if (!error) {
+        setContent("");
+        toast("Thought Added!", {
+          icon: "💭",
+          className: "bg-white",
+        });
+        setIsUpdated(!isUpdated);
+      }
     } catch (e) {
-      console.log(e);
+      console.error(e);
+      toast.error("Failed to add thought");
     }
-    toast("Thought Added !", {
-      icon: "💬",
-    });
-    setIsUpdated(!isUpdated);
   };
 
   const logout = async () => {
     try {
-      const { error } = await supabase.auth.signOut();
-    } catch (e) {}
-    setUserData({});
-    setIsLogged(false);
-    navigate("/");
+      await supabase.auth.signOut();
+      setUserData({});
+      setIsLogged(false);
+      navigate("/");
+    } catch (e) {
+      toast.error("Failed to logout");
+    }
   };
 
   return (
-    <div className="nav px-8 py-4 w-[1200px] m-auto border-b-[1px] border-white  max-sm:w-full">
-      <div className="flex justify-between items-center">
-        <div
-          className="logo text-3xl font-semibold font-sans cursor-pointer max-sm:text-2xl"
-          onClick={() => navigate("/")}
-        >
-          <p className="tracking-wider ">
-            Idea <span className="font-bold"> Vault</span>
-          </p>
-        </div>
-        <div className="usericon flex items-center gap-4">
-          <div className="dump ">
-            <Dialog>
-              <DialogTrigger>
-               {
-                isLogged ? ( <p className="text-lg font-semibold cursor-pointer tracking-wider text-base max-sm:text-base">
-                  Dump
-                </p>):<div></div>
-               }
-              </DialogTrigger>
-              <DialogContent className="w-[450px] h-[300px] bg-blue-200 max-sm:w-[350px]">
-                <DialogHeader>
-                  <DialogTitle className="text-lg font-semibold max-sm:text-lg max-sm:w-[300px]">
-                    Add a Thought
-                  </DialogTitle>
-                </DialogHeader>
-                <div className="div ">
-                  <div className="post-feed  flex flex-col  items-start gap-4 pb-[20px] max-sm:w-[300px]">
+    <nav className="fixed top-0 w-full z-50 backdrop-blur-sm bg-white/60">
+      <div className="max-w-6xl mx-auto px-6 py-4">
+        <div className="flex justify-between items-center">
+          {/* Logo */}
+          <div
+            onClick={() => navigate("/")}
+            className="cursor-pointer group"
+          >
+            <h1 className="text-2xl font-light tracking-wide text-gray-800 font-Playwrite">
+              Idea<span className="font-bold tracking-tighter font-Poppins">Vault</span>
+            </h1>
+          </div>
+
+          {/* Right Side Menu */}
+          <div className="flex items-center gap-2 md:gap-6">
+            <div> <button className="text-gray-600 hover:text-gray-800" onClick={() => navigate("/features")}>Features</button></div>
+            {isLogged && (
+              <Dialog>
+                <DialogTrigger>
+                  <Button 
+                    variant="ghost" 
+                    className="text-gray-700 hover:text-gray-900 hover:bg-gray-100/50 hidden md:block"
+                  >
+                    New Thought
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="bg-white/95 backdrop-blur-md border-none shadow-xl max-w-lg w-full font-Poppins">
+                  <DialogHeader>
+                    <DialogTitle className="text-xl font-medium text-gray-800">
+                      Add a Thought
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-4 pt-4">
                     <textarea
-                      className="w-[400px] h-[60px] rounded-lg px-4 py-4 font-semibold  border-stone-400 shadow-lg max-sm:w-[300px]"
-                      placeholder="Add thoughts to vault !"
+                      value={content}
                       onChange={(e) => setContent(e.target.value)}
-                    ></textarea>
-                    <div className="bottom flex justify-between items-center w-[400px] max-sm:w-[300px]">
-                      <div className="left flex gap-2 ">
-                        <Switch
-                          id="visibilty"
-                          className="shadow-sm border-[1px] border-stone-400 "
-                        />
-                        <label htmlFor="visibility " className="font-semibold">
-                          Public
-                        </label>
+                      className="w-full h-32 p-4 rounded-xl bg-gray-50/80 
+                               text-gray-800 resize-none transition-all
+                               focus:outline-none focus:ring-2 focus:ring-purple-200
+                               placeholder:text-gray-400"
+                      placeholder="What's on your mind?"
+                    />
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-3">
+                        <Switch className="bg-white shadow-sm" />
+                        <label className="text-gray-600">Make Public</label>
                       </div>
-                      <div className="right">
-                        <DialogClose asChild>
-                          <Button className="px-8" onClick={createThought}>
-                            FreeUp
-                          </Button>
-                        </DialogClose>
-                      </div>
+                      <DialogClose asChild>
+                        <Button
+                          onClick={createThought}
+                          className="bg-gray-900 hover:bg-gray-800 text-white"
+                        >
+                          Save
+                        </Button>
+                      </DialogClose>
                     </div>
                   </div>
-                </div>
-              </DialogContent>
-            </Dialog>
+                </DialogContent>
+              </Dialog>
+            )}
+
+            {isLogged ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-white/50 transition-all hover:ring-white/80">
+                    <img
+                      src={userData?.imageUrl}
+                      alt="avatar"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="bg-white/95 backdrop-blur-md border-none shadow-lg w-48 font-Poppins">
+                  <DropdownMenuLabel className="text-gray-800">
+                    {userData.name}
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator className="bg-gray-200" />
+                  <DropdownMenuItem
+                    onClick={() => navigate("/profile")}
+                    className="cursor-pointer text-gray-600 hover:text-gray-900 hover:bg-gray-50/80"
+                  >
+                    Profile
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => navigate("/vault")}
+                    className="cursor-pointer text-gray-600 hover:text-gray-900 hover:bg-gray-50/80"
+                  >
+                    My Vault
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={logout}
+                    className="cursor-pointer text-gray-600 hover:text-gray-900 hover:bg-gray-50/80"
+                  >
+                    Logout
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : null}
           </div>
-          <DropdownMenu>
-            <DropdownMenuTrigger>
-              {isLogged ? (
-                <div className="img-wrapper w-[50px] h-[50px] rounded-full overflow-hidden max-sm:w-[40px] max-sm:h-[40px]">
-                  <img
-                    src={userData.imageUrl}
-                    alt="avatar"
-                    className="w-[50px] h-[50px] max-sm:w-[40px] max-sm:h-[40px]"
-                  />
-                </div>
-              ) : (
-                <div></div>
-              )}
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="px-12 bg-slate-800 text-white pb-6 max-sm:px-2 max-sm:pb-2">
-              <DropdownMenuLabel className="cursor-pointer text-xl max-sm:text-base">
-                {userData.name}
-              </DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem
-                className="cursor-pointer text-lg font-sm max-sm:text-sm"
-                onClick={() => navigate("/profile")}
-              >
-                Profile
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                className="cursor-pointer text-lg max-sm:text-sm"
-                onClick={() => navigate("/vault")}
-              >
-                My Vault
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                className="cursor-pointer text-lg max-sm:text-sm"
-                onClick={logout}
-              >
-                Logout
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
 

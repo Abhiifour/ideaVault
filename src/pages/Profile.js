@@ -1,48 +1,81 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
+import { Textarea } from "../components/ui/textarea";
 import { useRecoilValue } from "recoil";
 import { userState } from "../Atom";
+import { PenLine } from "lucide-react";
 
 function Profile() {
-  const userData = useRecoilValue(userState)
+  const userData = useRecoilValue(userState);
+  const [bio, setBio] = useState("it's my personal space to bomb ideas.");
+
+  
+
   return (
-    <div className="profile w-[1200px] m-auto px-8 max-sm:w-full max-sm:h-full max-sm:pb-0 max-sm:mt-4 max-sm:mb-[210px]">
-      <div className="top text-8xl font-bold text-white text-start  max-sm:text-5xl max-sm:text-center max-sm:w-full max-sm:mt-4">
-        Profile
-      </div>
-      <div className="content mt-8 flex flex-col items-center gap-4">
-        <div className="avatar">
-          <div className="img-wrapper w-[80px] h-[80px] rounded-full border-[1px] overflow-hidden border-stone-600">
-            <img src={userData.imageUrl} alt="icon" className="w-[80px] h-[80px]" />
-          </div>
+    <div className="min-h-screen bg-gradient-to-b from-purple-50 via-blue-50 to-white pt-[60px]">
+      {/* Background Pattern */}
+
+
+      <div className="relative z-10 max-w-4xl mx-auto px-6 py-12">
+        {/* Header */}
+        <div className="text-5xl font-serif text-gray-800 mb-12">
+          Your Profile
         </div>
-        <div className="username text-xl font-semibold">{userData.name}</div>
-        <div className="bio font-semibold">
-          its my personal space to bomb ideas.
-        </div>
-        <div className="email font-semibold">{userData.email}</div>
-        <div className="icons flex flex-row flex-wrap gap-4 w-[300px] justify-center mt-4 max-sm:hidden">
-          <div className="img-wrapper w-[80px] h-[80px] rounded-full border-[1px] overflow-hidden border-stone-600">
-            <img src="" alt="" className="w-[80px] h-[80px]" />
+
+        {/* Main Content */}
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-8">
+          <div className="flex flex-col items-center gap-8">
+            {/* Profile Picture */}
+            <div className="relative group">
+              <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-purple-200">
+                <img 
+                  src={userData.imageUrl || "/api/placeholder/96/96"} 
+                  alt="Profile" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <button className="absolute bottom-0 right-0 bg-purple-600 text-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                <PenLine size={16} />
+              </button>
+            </div>
+
+            {/* User Info */}
+            <div className="w-full space-y-6">
+              <div>
+                <label className="text-sm text-gray-600 mb-2 block">Name</label>
+                <Input 
+                  defaultValue={userData.name}
+                  className="bg-white/50"
+                />
+              </div>
+              
+              <div>
+                <label className="text-sm text-gray-600 mb-2 block">Bio</label>
+                <Textarea 
+                  value={bio}
+                  onChange={(e) => setBio(e.target.value)}
+                  className="bg-white/50 min-h-[100px]"
+                />
+              </div>
+
+              <div>
+                <label className="text-sm text-gray-600 mb-2 block">Email</label>
+                <Input 
+                  defaultValue={userData.email}
+                  disabled
+                  className="bg-gray-50"
+                />
+              </div>
+            </div>
+
+            {/* Achievements */}
+          
+            {/* Save Button */}
+            <Button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-6">
+              Save Changes
+            </Button>
           </div>
-          <div className="img-wrapper w-[80px] h-[80px] rounded-full border-[1px] overflow-hidden border-stone-600">
-            <img src="" alt="" className="w-[80px] h-[80px]" />
-          </div>
-          <div className="img-wrapper w-[80px] h-[80px] rounded-full border-[1px] overflow-hidden border-stone-600">
-            <img src="" alt="" className="w-[80px] h-[80px]" />
-          </div>
-          <div className="img-wrapper w-[80px] h-[80px] rounded-full border-[1px] overflow-hidden border-stone-600">
-            <img src="" alt="" className="w-[80px] h-[80px]" />
-          </div>
-          <div className="img-wrapper w-[80px] h-[80px] rounded-full border-[1px] overflow-hidden border-stone-600">
-            <img src="" alt="" className="w-[80px] h-[80px]" />
-          </div>
-          <div className="img-wrapper w-[80px] h-[80px] rounded-full border-[1px] overflow-hidden border-stone-600">
-            <img src="" alt="" className="w-[80px] h-[80px]" />
-          </div>
-        </div>
-        <div className="save mt-6 pb-6">
-            <Button className="px-8 py-2">Save Changes</Button>
         </div>
       </div>
     </div>
