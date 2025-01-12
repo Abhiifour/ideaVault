@@ -7,12 +7,14 @@ import Vault from "./pages/Vault";
 import Profile from "./pages/Profile";
 import { Toaster } from "react-hot-toast";
 import Footer from "./pages/Elements/Footer";
+import Features from "./pages/Feature";
 
 function App() {
   return (
-    <div className="App bg-gradient-to-r from-blue-200 to-purple-200">
+    <div className="App bg-gradient-to-r from-blue-200 to-purple-200 font-Poppins">
       <Nav />
       <Routes>
+        <Route path="/features" element={<Features />} />
         <Route path="/" element={<Home />} />
         <Route path="/Vault" element={<Vault />} />
         <Route path="/profile" element={<Profile />} />

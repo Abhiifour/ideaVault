@@ -3,7 +3,6 @@ import { Button } from "../../components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -14,36 +13,70 @@ import { login } from "../../supabase/auth";
 function Login() {
   const handleLogin = async () => {
     await login();
-    console.log('login')
   };
+
   return (
-    <div className="login mt-[100px] flex flex-col gap-8 max-sm:w-full">
-      <div className="headin">
-        <p className="text-2xl font-semibold max-sm:text-xl">Start Dumping Your Thoughts</p>
+    <div className="flex flex-col items-center gap-8 p-8">
+      <div className="text-center space-y-4">
+        <h2 className="text-2xl font-medium text-gray-800">
+          Ready to Start Your Journey?
+        </h2>
+    
       </div>
-      <div className="signin">
-        <Dialog>
-          <DialogTrigger>
-            <Button className="px-16 py-6 text-lg shadow-lg max-sm:text-base max-sm:px-8 max-sm:py-3">Start</Button>
-          </DialogTrigger>
-          <DialogContent className="w-[400px] h-[300px] bg-blue-200 max-sm:w-[350px]">
-            <DialogHeader>
-              <DialogTitle className="text-lg">Login To Continue</DialogTitle>
-            </DialogHeader>
-            <div className="logo flex items-center justify-center">
-              <p className="text-6xl font-bold  tracking-wider max-sm:text-4xl">Idea</p>
-              <p className=" text-6xl font-bold tracking-wider text-white max-sm:text-4xl">
-                Vault
-              </p>
+
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button
+            className="px-8 py-6 text-lg bg-purple-600 hover:bg-purple-700 
+                     text-white shadow-lg transition-all duration-300 
+                     rounded-xl"
+          >
+            Get Started
+          </Button>
+        </DialogTrigger>
+
+        <DialogContent className="w-[400px] p-0 bg-transparent border-0 shadow-2xl">
+          <div className="relative w-full h-full overflow-hidden">
+            {/* Background SVG */}
+       
+
+            {/* Content */}
+            <div className="relative z-10 bg-white/80 backdrop-blur-sm rounded-2xl">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-serif text-center pt-8 font-Poppins">
+                  Welcome to{" "}
+                  <span className="font-medium font-Playwrite">
+                    Idea<span className="text-purple-600 font-Poppins tracking-tighter">Vault</span>
+                  </span>
+                </DialogTitle>
+              </DialogHeader>
+
+              <div className="p-8 space-y-8 font-Poppins">
+                <div className="text-center space-y-2">
+                  <p className="text-gray-600">
+                    Sign in to start capturing your thoughts
+                  </p>
+                </div>
+
+                <Button
+                  onClick={handleLogin}
+                  className="w-full py-6 text-lg bg-white hover:bg-gray-50 
+                           text-gray-800 border border-gray-200 shadow-sm 
+                           flex items-center justify-center gap-3 
+                           transition-all duration-300"
+                >
+                  <SiGmail className="text-xl text-red-500" />
+                  Continue with Google
+                </Button>
+
+                <p className="text-sm text-gray-500 text-center">
+                  By continuing, you agree to our Terms of Service and Privacy Policy
+                </p>
+              </div>
             </div>
-            <div className="div m-auto ">
-              <Button className="flex gap-2 text-lg max-sm:text-base" onClick={handleLogin}>
-                Sign-in with Google <SiGmail />
-              </Button>
-            </div>
-          </DialogContent>
-        </Dialog>
-      </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
